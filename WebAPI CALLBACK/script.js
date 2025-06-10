@@ -9,9 +9,7 @@ function getWeather() {
 
   fetch(url)
     .then(response => {
-      if (!response.ok) {
-        throw new Error("City not found");
-      }
+      if(!response.ok) throw new Error("City not found");
       return response.json();
     })
     .then(data => {
@@ -36,7 +34,27 @@ function getWeather() {
     })
     .catch(error => {
       const errorMsg = document.createElement("p");
-      errorMsg.textContent = ` ${error.message}`;
+      errorMsg.textContent = error.message;
       weatherDiv.appendChild(errorMsg);
     });
 }
+// function makeHttpRequest(method, url, callback) {
+//   const xhr = new XMLHttpRequest()
+//   xhr.responseType = 'json'
+//   xhr.addEventListener('load', () => {
+//     callback(xhr.response)
+//   })
+
+//   xhr.open(method, url)
+//   xhr.send()
+// }
+
+// makeHttpRequest('GET', 'https://dummyjson.com/users', (usersData) => {
+//   makeHttpRequest('GET', `https://dummyjson.com/posts/user/${usersData.users[0].id}`, (postsData) => {
+//     makeHttpRequest('GET', `https://dummyjson.com/comments/post/${postsData.posts[0].id}`, (commentsData) => {
+//       makeHttpRequest('GET', `https://dummyjson.com/users/${commentsData.comments[0].user.id}`, (userData) => {
+//         console.log(userData);
+//       });
+//     });
+//   });
+// })
