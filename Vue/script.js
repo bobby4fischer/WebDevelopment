@@ -1,1 +1,1 @@
-const app=VTTCue.
+const app=Vue.createapp()
